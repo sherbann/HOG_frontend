@@ -1,0 +1,61 @@
+.main {
+  background-color: #e8e8e8;
+}
+.main .card {
+  background-color: #e8e8e8;
+  border: none;
+}
+.participant-profile-card {
+  margin-left: 30px;
+  border-radius: 20px;
+}
+
+.card-body {
+  color: orange;
+  text-align: center;
+  font-size: 15px;
+  background-color: #fff;
+  box-shadow: 0 0 18px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  border: 2px solid orange;
+
+  /* border: 4px solid purple; */
+  border-radius: 20px;
+}
+
+.card-body:hover {
+  transform: scale(1.1);
+}
+
+.social-icons {
+  color: orange;
+  font-size: 20px;
+}
+
+.social-icons:hover {
+  color: orangered;
+}
+.update-button {
+  background-color: orange;
+  color: #fff;
+  border-color: orange;
+  margin-right: 10px;
+}
+.update-button:hover {
+  background-color: #e79906;
+  border-color: orange;
+}
+
+.firstname-lastname {
+  font-size: 25px;
+}
+
+.logout-button {
+  background-color: orange;
+  color: #fff;
+  border: none;
+}
+.logout-button:hover {
+  background-color: orangered;
+}

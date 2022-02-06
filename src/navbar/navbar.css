@@ -1,0 +1,18 @@
+/* Navbar */
+.navbar {
+  background-color: #e8e8e8;
+}
+.login-navbar h1 {
+  color: #800080;
+  font-size: 35px;
+}
+span {
+  font-family: Lucida sans Typewriter;
+  font-weight: normal;
+  font-size: inherit;
+  color: orange;
+}
+
+.ityped-cursor {
+  animation: blink 1s infinite;
+}
