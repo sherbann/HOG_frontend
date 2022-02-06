@@ -1,9 +1,10 @@
 import axios from "axios";
-const url = "http://localhost:3001/";
+//const url = "http://localhost:3001/";
+const url = "https://hog-backend.herokuapp.com/";
 
 export class ApiClient {
   // username added 2 Feb
-  constructor(tokenProvider, newUserType, newUsername, logoutHandler){
+  constructor(tokenProvider, newUserType, newUsername, logoutHandler) {
     this.tokenProvider = tokenProvider;
     this.logoutHandler = logoutHandler;
     this.userType = newUserType;
@@ -12,7 +13,7 @@ export class ApiClient {
   }
 
 
-  authenticatedCall(method,url,data){
+  authenticatedCall(method, url, data) {
     return axios({
       method,
       url,
@@ -21,12 +22,12 @@ export class ApiClient {
       },
       data,
     }).catch((error) => {
-      if(error.response.status === 403) {
+      if (error.response.status === 403) {
         this.logoutHandler();
         return Promise.reject()
       } else {
-      throw error;
-    }
+        throw error;
+      }
     });
   }
 
@@ -40,8 +41,8 @@ export class ApiClient {
     });
   }
 
-  login(username,password) {
-    return this.apiCall("post",url + "auth/",{username: username, password:password});
+  login(username, password) {
+    return this.apiCall("post", url + "auth/", { username: username, password: password });
   }
 
   // getEvents() {
@@ -65,8 +66,8 @@ export class ApiClient {
   }
 
   addProfile(username, userType, firstName, lastName, bio, email, image, cv, location, companyName, companyType, isRecruiting, currentVacancies, isEmployed, employedInTech, employedOther, freelance, notEmployed, inEducation, like, portfolio, github, linkedin, skills) {
-   // console.log("Posting", firstName)
-    return this.authenticatedCall("post", url, { username, userType,  firstName, lastName, bio, email, image, cv, location, companyName, companyType, isRecruiting, currentVacancies, isEmployed, employedInTech, employedOther, freelance, notEmployed, inEducation, like, portfolio, github, linkedin, skills });
+    // console.log("Posting", firstName)
+    return this.authenticatedCall("post", url, { username, userType, firstName, lastName, bio, email, image, cv, location, companyName, companyType, isRecruiting, currentVacancies, isEmployed, employedInTech, employedOther, freelance, notEmployed, inEducation, like, portfolio, github, linkedin, skills });
   }
 
   removeProfile(id) {
@@ -74,8 +75,8 @@ export class ApiClient {
   }
 
 
-  updateProfile(id, username, userType, firstName, lastName, bio, email, location, portfolio, github, linkedin, isEmployed, skills ) {
-    return this.authenticatedCall("put", `${url}${id}`, { username, userType, firstName, lastName, bio, email, location, portfolio, github, linkedin, isEmployed, skills});
+  updateProfile(id, username, userType, firstName, lastName, bio, email, location, portfolio, github, linkedin, isEmployed, skills) {
+    return this.authenticatedCall("put", `${url}${id}`, { username, userType, firstName, lastName, bio, email, location, portfolio, github, linkedin, isEmployed, skills });
 
   }
 }

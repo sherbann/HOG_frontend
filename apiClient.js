@@ -1,15 +1,16 @@
 import axios from "axios";
-const url = "http://localhost:3003/";
+//const url = "http://localhost:3003/";
+const url = "https://hog-backend.herokuapp.com/";
 
 export class ApiClient {
-  constructor(tokenProvider, newUserType, logoutHandler){
+  constructor(tokenProvider, newUserType, logoutHandler) {
     this.tokenProvider = tokenProvider;
     this.logoutHandler = logoutHandler;
     this.userType = newUserType;
   }
 
 
-  authenticatedCall(method,url,data){
+  authenticatedCall(method, url, data) {
     return axios({
       method,
       url,
@@ -18,12 +19,12 @@ export class ApiClient {
       },
       data,
     }).catch((error) => {
-      if(error.response.status === 403) {
+      if (error.response.status === 403) {
         this.logoutHandler();
         return Promise.reject()
       } else {
-      throw error;
-    }
+        throw error;
+      }
     });
   }
 
@@ -37,8 +38,8 @@ export class ApiClient {
     });
   }
 
-  login(username,password) {
-    return this.apiCall("post",url + "auth/",{username: username, password:password});
+  login(username, password) {
+    return this.apiCall("post", url + "auth/", { username: username, password: password });
   }
 
   getProfiles() {
@@ -48,7 +49,7 @@ export class ApiClient {
   // Admin Add 
   addProfile(username, userType, firstName, lastName, bio, email, image, cv, location, isEmployed, employedInTech, employedOther, freelance, notEmployed, inEducation, saveForlater) {
     console.log("Posting", firstName)
-    return this.authenticatedCall("post", url, { username, userType,  firstName, lastName, bio, email, image, cv, location, isEmployed, employedInTech, employedOther, freelance, notEmployed, inEducation, saveForlater });
+    return this.authenticatedCall("post", url, { username, userType, firstName, lastName, bio, email, image, cv, location, isEmployed, employedInTech, employedOther, freelance, notEmployed, inEducation, saveForlater });
   }
   // Admin remove
   removeProfile(id) {
@@ -60,12 +61,12 @@ export class ApiClient {
   }
 
   //Admin Find
-  queryResult(searchParams){
+  queryResult(searchParams) {
     return this.authenticatedCall("post", `${url}`, searchParams)
   }
 
   //Employer Find
-   queryResult2(searchEmployerParams){
+  queryResult2(searchEmployerParams) {
     return this.authenticatedCall("post", `${url}tda/employersearch`, searchEmployerParams)
   }
 }
