@@ -22,9 +22,10 @@
     "react-scripts": "^5.0.0",
     "react-select": "^5.2.2",
     "react-table": "^6.x.x",
-    "react-table-6": "^6.11.0"
+    "react-table-6": "^6.11.0",
+    "serve": "^13.0.2"
   },
- "scripts": {
+  "scripts": {
     "dev": "react-scripts start",
     "start": "serve -s build",
     "build": "react-scripts build",

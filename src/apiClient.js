@@ -45,22 +45,6 @@ export class ApiClient {
     return this.apiCall("post", url + "auth/", { username: username, password: password });
   }
 
-  // getEvents() {
-  //   return this.authenticatedCall("get", url);
-  // }
-
-  // addEvent(name, location, info, eventDate) {
-  //   console.log("Posting", name)
-  //   return this.authenticatedCall("post", url, { name, location, info, eventDate });
-  // }
-
-  // removeEvent(id) {
-  //   return this.authenticatedCall("delete", `${url}${id}`);
-  // }
-
-  // updateEvent(id, name, location, info, eventDate) {
-  //   return this.authenticatedCall("put", `${url}${id}`, { name, location, info, eventDate });
-  // }
   getProfiles() {
     return this.authenticatedCall("get", url);
   }
